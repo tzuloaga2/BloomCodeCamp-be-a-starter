@@ -5,6 +5,8 @@ import com.hcc.filters.JwtFilter;
 import com.hcc.services.UserDetailsServiceImpl;
 import com.hcc.utils.CustomPasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -35,6 +37,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     JwtFilter filter;
 
+    @Override
+    @Bean
+    public AuthenticationManager authenticationManagerBean() throws Exception{
+        return super.authenticationManagerBean();
+    }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
@@ -58,11 +66,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/auth/**").permitAll()
                 .anyRequest().authenticated();
 
-
-
         http.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
 
     }
+
+
 
 
 

@@ -2,6 +2,8 @@ package com.hcc.enums;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.annotation.Resource;
+
 public enum AuthorityEnum {
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
         Greeting1(1, "Learner"),
@@ -9,7 +11,8 @@ public enum AuthorityEnum {
         Greeting3(3, "Owner"),
         Greeting4(4, "Teacher");
 
-        private int authorityNumber;
+
+    private int authorityNumber;
 
         private String authorityLevelMessage;
         AuthorityEnum(int authorityNumber, String authorityLevelMessage) {

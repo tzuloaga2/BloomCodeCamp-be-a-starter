@@ -88,15 +88,6 @@ public class User implements UserDetails {
     }
 
 
-//    @Override
-//    public Collection<? extends GrantedAuthority> getAuthorities() {
-//        List<GrantedAuthority> roles = new ArrayList<>();
-//        roles.add(new Authority("role_learner"));
-//        //after doing validiation
-//        return authorities;
-////        return roles;
-//    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        List<GrantedAuthority> roles = new ArrayList<>();
@@ -120,10 +111,6 @@ public class User implements UserDetails {
     public void setCohortStartDate(LocalDate cohortStartDate) {
         this.cohortStartDate = cohortStartDate;
     }
-
-//    public List<Authority> getAuthorities() {
-//        return authorities;
-//    }
 
     public void setAuthorities(List<Authority> authorities) {
         this.authorities = authorities;

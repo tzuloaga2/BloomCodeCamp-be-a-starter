@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 @RestController
@@ -23,11 +24,12 @@ import java.util.Optional;
 
 public class AssignmentController {
     //Get Assignments By User /api/assignments
+
     @Autowired
     AssignmentRepository assignmentRepository;
     @GetMapping("/api/assignments")
-    public ResponseEntity<?> getAssignmentByUser() {
-        List<Assignment> answer = assignmentRepository.findAll();
+    public ResponseEntity<?> getAssignmentByUser(@AuthenticationPrincipal User user) {
+        Set<Assignment> answer = assignmentRepository.findAssigmentByUser(user);
         return ResponseEntity.ok(answer);
     }
     //get assignments by id
