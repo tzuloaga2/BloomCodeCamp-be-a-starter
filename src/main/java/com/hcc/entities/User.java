@@ -1,4 +1,5 @@
 package com.hcc.entities;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -33,21 +34,21 @@ public class User implements UserDetails {
     @Column(name = "password")
     private String password;
 
-//    @OneToMany
-//    private List<Authority> authorities;
-    //not added in sprint 1 as per instructor- crashed
-
+   @OneToMany(fetch = FetchType.EAGER, mappedBy = "user")
+   @JsonIgnore
+   private List<Authority> authorities;
 
     //no args constructor
     public User(){}
 
     //constructor
     public User(String username, String password, LocalDate cohortStartDate) {
-//List<Authority> authorities
+
+        List<Authority> authorities = null;
         this.username = username;
         this.password = password;
         this.cohortStartDate = cohortStartDate;
-       // this.authorities = authorities;
+        this.authorities = authorities;
     }
 
     public Long getId() {
@@ -86,11 +87,22 @@ public class User implements UserDetails {
         this.username = username;
     }
 
+
+//    @Override
+//    public Collection<? extends GrantedAuthority> getAuthorities() {
+//        List<GrantedAuthority> roles = new ArrayList<>();
+//        roles.add(new Authority("role_learner"));
+//        //after doing validiation
+//        return authorities;
+////        return roles;
+//    }
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        List<GrantedAuthority> roles = new ArrayList<>();
-        roles.add(new Authority("role_learner"));
-        return roles;
+//        List<GrantedAuthority> roles = new ArrayList<>();
+////        roles.add(new Authority("role_learner"));
+//           return roles;
+        return authorities;
     }
 
     public String getPassword() {
@@ -112,8 +124,8 @@ public class User implements UserDetails {
 //    public List<Authority> getAuthorities() {
 //        return authorities;
 //    }
-//
-//    public void setAuthorities(List<Authority> authorities) {
-//        this.authorities = authorities;
-//    }
+
+    public void setAuthorities(List<Authority> authorities) {
+        this.authorities = authorities;
+    }
 }

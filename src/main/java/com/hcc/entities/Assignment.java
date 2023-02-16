@@ -42,19 +42,20 @@ public class Assignment {
     @ManyToOne(optional = false)
     private User user;
 
-//    @Column(name = "code_reviewer")
-//    private User code_reviewer;
+    @Column(name = "code_reviewer")
+    private User code_reviewer;
 
-    Assignment(){}
+    //made Assignment public to access in Assignment Controller
+    public Assignment(){}
 
-    public Assignment(String status, Integer assignmentnumber, String githubUrl, String branch, String reviewVideoUrl, User user) {
+    public Assignment(String status, Integer assignmentnumber, String githubUrl, String branch, String reviewVideoUrl, User user, User code_reviewer) {
         this.status = status;
         this.assignmentnumber = assignmentnumber;
         this.githubUrl = githubUrl;
         this.branch = branch;
         this.reviewVideoUrl = reviewVideoUrl;
         this.user = user;
-//        this.code_reviewer = code_reviewer;
+        this.code_reviewer = code_reviewer;
 }
 
     public Long getId() {
@@ -113,11 +114,11 @@ public class Assignment {
         this.user = user;
     }
 
-//    public User getCode_reviewer() {
-//        return code_reviewer;
-//    }
-//
-//    public void setCode_reviewer(User code_reviewer) {
-//        this.code_reviewer = code_reviewer;
-//    }
+    public User getCode_reviewer() {
+        return code_reviewer;
+    }
+
+    public void setCode_reviewer(User code_reviewer) {
+        this.code_reviewer = code_reviewer;
+    }
 }

@@ -20,6 +20,9 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 
 	runtimeOnly 'org.postgresql:postgresql'
+	//holds jwt below to leverage
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
