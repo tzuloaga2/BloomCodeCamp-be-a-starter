@@ -26,7 +26,7 @@ public class Authority implements GrantedAuthority  {
     private User user;
 
     public Authority(){}
-    public Authority(String authority){
+    public Authority(String authority, User user){
         this.authority = authority;
         this.user = user;
     }
