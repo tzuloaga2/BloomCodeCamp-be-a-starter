@@ -22,12 +22,11 @@ import com.hcc.entities.User;
 public class Assignment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    //private Long id;
+    private Long id;
 
     //do not necessarily need @Column notation if not changing the name
 
-    @Column(name = "id")
-    private Long id;
+
     @Column(name = "status")
     private String status;
     @Column(name = "assignmentnumber")

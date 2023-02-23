@@ -33,14 +33,14 @@ public class LoginController {
 //    create a response entity with the auth header and a generated jwt token in the headers and the user object in the body of the response.
 
     @PostMapping("/login")
-    ResponseEntity<String> login(@RequestBody AuthCredentialRequestDto authCredentialRequestDto) throws Exception {
+    ResponseEntity<?> login(@RequestBody AuthCredentialRequestDto authCredentialRequestDto) throws Exception {
         try{
         Authentication authentication = authenticationManager.authenticate
                 (new UsernamePasswordAuthenticationToken(authCredentialRequestDto.getUsername(),
                         authCredentialRequestDto.getPassword()));
     User user = (User) authentication.getPrincipal();
     user.setPassword(null);
-    return new ResponseEntity<>("Login successful", HttpStatus.OK);
+    return ResponseEntity.ok().header(HttpHeaders.AUTHORIZATION, jwtUtils.generateToken(user)).body("Login SUCCESS");
         } catch (BadCredentialsException exception){
             throw new Exception("Credentials NOT valid");
         }

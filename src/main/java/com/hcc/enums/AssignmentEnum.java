@@ -5,10 +5,10 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public enum AssignmentEnum {
     @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 
-        Greeting1(1, "Introduction"),
-        Greeting2(2, "Module 1"),
-        Greeting3(3, "Module 2"),
-        Greeting4(4, "Final project");
+        Introduction(1, "Introduction"),
+        Module1(2, "Module 1"),
+        Module2(3, "Module 2"),
+        FinalProject(4, "Final project");
 
         private int assignmentNumber;
 

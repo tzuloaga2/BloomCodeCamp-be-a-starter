@@ -1,12 +1,12 @@
 package com.hcc.utils;
 
 
+import com.hcc.entities.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ import java.util.function.Function;
 public class JWTUtils {
 
     //how long is the token valid? a whole day
-    public static final long JWT_TOKEN_VALIDITY = 60 * 60 * 24;
+    public static final long JWT_TOKEN_VALIDITY = 6000 * 60000 * 24;
 
     // get the jwt secret from the properties file
     @Value("${jwt.secret}")
