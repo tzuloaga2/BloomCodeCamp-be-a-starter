@@ -30,6 +30,7 @@ public class AssignmentController {
         Set<Assignment> answer = assignmentRepository.findAssignmentByUser(user);
         return ResponseEntity.ok(answer);
     }
+
     //get assignments by id
     @GetMapping("/api/assignments/{id}")
     public ResponseEntity<?> getAssignmentById(@PathVariable Long id, @AuthenticationPrincipal User user) {
